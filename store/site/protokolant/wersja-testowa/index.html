@@ -1,0 +1,237 @@
+<!doctype html>
+<!--
+  ==== WERSJA TYMCZASOWA ====
+  Strona istnieje tylko do czasu publikacji w Chrome Web Store. Po publikacji usuń ten katalog
+  i wszystkie miejsca oznaczone „WERSJA TYMCZASOWA” (grep -rn "WERSJA TYMCZASOWA" store/site scripts).
+  Nazwę paczki (protokolant-<wersja>.zip) wgrywa scripts/deploy-site.sh z dist/ – musi być zbudowana przez scripts/build-zip.py.
+-->
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wersja testowa Protokolanta – instalacja z paczki ZIP</title>
+  <meta name="description" content="Zanim Protokolant pojawi się w Chrome Web Store, możesz zainstalować go z paczki ZIP w trybie dewelopera Chrome.">
+  <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#3B5BDB">
+  <link rel="icon" href="../img/rec.svg" type="image/svg+xml">
+  <link rel="icon" href="../img/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../img/icon-128.png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<!-- Ikony do ilustracji strony chrome://extensions: proste, własne kształty (nie grafiki Google). -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-menu" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></g></symbol>
+  <symbol id="i-reload" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12a7 7 0 1 1-2.05-4.95"/><path d="M19.5 4.5v4h-4"/></g></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path fill="currentColor" d="M3 6.5A1.5 1.5 0 0 1 4.5 5h5l2 2h8A1.5 1.5 0 0 1 21 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M6 3.5h8l4 4v13H6z M14 3.5v4h4"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../img/rec.svg" width="40" height="40" alt="">Protokolant</a>
+    <nav class="nav" aria-label="Strony">
+      <a href="../#jak-to-dziala">Jak to działa</a>
+      <a href="../instalacja/">Instalacja</a>
+      <a href="./" aria-current="page">Wersja testowa</a>
+      <a href="../#plik">Plik</a>
+      <a href="../#prywatnosc">Prywatność</a>
+      <a href="../#pytania">Pytania</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="band hero page-hero">
+    <div class="wrap">
+      <span class="flag">Tymczasowo, do publikacji w sklepie</span>
+      <h1>Wersja <em>testowa</em></h1>
+      <p class="lead">Protokolant czeka na weryfikację w&nbsp;Chrome Web Store. Do tego czasu możesz zainstalować go z&nbsp;paczki ZIP – to ta sama wersja, która trafi do sklepu. Instalacja zajmuje kilka minut i&nbsp;wymaga włączenia trybu dewelopera w&nbsp;Chrome.</p>
+      <div class="cta">
+        <a class="btn" href="protokolant-1.0.5.zip" download><span class="dot"></span>Pobierz Protokolanta 1.0.5 (ZIP, 41&nbsp;KB)</a>
+        <span class="cta-side"><small>Chrome na komputerze · Windows, macOS, Linux</small><small>Wersja 1.0.5 z&nbsp;5 listopada 2026 r.</small></span>
+      </div>
+      <ol class="toc">
+        <li><a href="#krok-1">Rozpakuj</a></li>
+        <li><a href="#krok-2">Tryb dewelopera</a></li>
+        <li><a href="#krok-3">Załaduj rozpakowane</a></li>
+        <li class="key"><a href="#krok-4">Przypnij ikonę</a></li>
+        <li><a href="#krok-5">Dołącz do spotkania</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <section class="istep">
+    <div class="wrap">
+      <div class="why-box warn">
+        <div class="icon"><span>!</span></div>
+        <div>
+          <h3>Zanim zaczniesz</h3>
+          <p><b>Folder z&nbsp;dodatkiem musi zostać na dysku.</b> Chrome wczytuje wersję testową bezpośrednio z&nbsp;folderu, który wskażesz. Jeśli go usuniesz albo przeniesiesz, dodatek przestanie działać.</p>
+          <p><b>Nie ma automatycznych aktualizacji.</b> Nowe wersje pobierasz z&nbsp;tej strony i&nbsp;podmieniasz ręcznie (<a href="#aktualizacja">jak to zrobić</a>).</p>
+          <p><b>Komputer służbowy może nie pozwolić na tryb dewelopera.</b> Jeśli przełącznik jest wyszarzony, przeglądarką zarządza administrator – poczekaj na wersję z&nbsp;Chrome Web Store.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="istep" id="krok-1">
+    <div class="wrap split">
+      <div class="text">
+        <div class="istep-head"><span class="n">1</span><h2>Pobierz i&nbsp;rozpakuj paczkę</h2></div>
+        <p>Pobierz paczkę przyciskiem powyżej i&nbsp;rozpakuj ją do folderu, który zostanie na stałe, np. <code>Dokumenty\Protokolant</code>. Nie zostawiaj go w&nbsp;Pobranych, które łatwo przy okazji posprzątać.</p>
+        <ul class="dots small">
+          <li><b>Windows:</b> kliknij paczkę prawym przyciskiem, wybierz „Wyodrębnij wszystkie…” i&nbsp;wskaż folder <code>Dokumenty\Protokolant</code>.</li>
+          <li><b>macOS:</b> kliknij paczkę dwukrotnie, a&nbsp;powstały folder przenieś do Dokumentów i&nbsp;nazwij go „Protokolant”.</li>
+          <li><b>Linux:</b> <code>unzip protokolant-1.0.5.zip -d ~/Protokolant</code></li>
+        </ul>
+        <p>Plik <code>manifest.json</code> musi leżeć bezpośrednio w&nbsp;tym folderze, nie w&nbsp;kolejnym podfolderze.</p>
+      </div>
+      <div class="visual">
+        <div class="card folder" role="img" aria-label="Zawartość folderu Protokolant: podfolder icons i pliki, w tym manifest.json">
+          <div class="folder-bar"><svg><use href="#i-folder"/></svg>Dokumenty › Protokolant</div>
+          <ul>
+            <li><svg class="d"><use href="#i-folder"/></svg>icons</li>
+            <li><svg><use href="#i-file"/></svg>background.js</li>
+            <li><svg><use href="#i-file"/></svg>content.js</li>
+            <li class="hl-row"><svg><use href="#i-file"/></svg>manifest.json<span class="tag">musi być tutaj</span></li>
+            <li><svg><use href="#i-file"/></svg>popup.html</li>
+            <li class="more-files">… i&nbsp;kilka innych plików</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="istep" id="krok-2">
+    <div class="wrap split">
+      <div class="text">
+        <div class="istep-head"><span class="n">2</span><h2>Włącz tryb dewelopera</h2></div>
+        <p>Wpisz w&nbsp;pasku adresu Chrome poniższy adres i&nbsp;naciśnij Enter. Strona nie może otworzyć go za Ciebie – Chrome nie pozwala na linki do swoich ustawień.</p>
+        <div class="copy-line"><code id="ext-url">chrome://extensions</code><button type="button" class="copy" data-copy="ext-url">Kopiuj</button></div>
+        <p>W&nbsp;prawym górnym rogu strony „Rozszerzenia” włącz przełącznik <b>„Tryb dewelopera”</b>. Pod nagłówkiem pojawią się dodatkowe przyciski.</p>
+      </div>
+      <div class="visual">
+        <div class="cr cr-ext" role="img" aria-label="Strona Rozszerzenia w Chrome; zaznaczony przełącznik Tryb dewelopera w prawym górnym rogu">
+          <div class="cr-ext-top">
+            <svg><use href="#i-menu"/></svg><span class="title">Rozszerzenia</span>
+            <span class="cr-search"><svg><use href="#i-search"/></svg>Szukaj w&nbsp;rozszerzeniach</span>
+            <span class="dev hl">Tryb dewelopera<span class="tgl on"></span></span>
+          </div>
+          <div class="cr-ext-tools">
+            <span class="chip">Załaduj rozpakowane</span><span class="chip">Spakuj rozszerzenie</span><span class="chip">Aktualizuj</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="istep" id="krok-3">
+    <div class="wrap split">
+      <div class="text">
+        <div class="istep-head"><span class="n">3</span><h2>Kliknij „Załaduj rozpakowane”</h2></div>
+        <p>Wskaż folder z&nbsp;kroku 1 (ten, w&nbsp;którym jest <code>manifest.json</code>) i&nbsp;kliknij „Wybierz folder”. Na liście pojawi się karta Protokolanta z&nbsp;numerem wersji.</p>
+        <p class="note">Komunikat o&nbsp;braku pliku manifestu oznacza, że wskazany folder jest o&nbsp;poziom za wysoko – wejdź do środka i&nbsp;wybierz folder z&nbsp;plikami dodatku.</p>
+      </div>
+      <div class="visual">
+        <div class="cr cr-ext" role="img" aria-label="Zaznaczony przycisk Załaduj rozpakowane i poniżej karta rozszerzenia Protokolant w wersji 1.0.5">
+          <div class="cr-ext-tools">
+            <span class="chip hl">Załaduj rozpakowane</span><span class="chip">Spakuj rozszerzenie</span><span class="chip">Aktualizuj</span>
+          </div>
+          <div class="cr-card">
+            <div class="cr-card-main">
+              <img src="../img/icon-128.png" width="40" height="40" alt="">
+              <div>
+                <b>Protokolant – transkrypcje dla Google Meet™</b> <span class="ver">1.0.5</span>
+                <span class="desc">Transkrypcje spotkań Google Meet™ po polsku zapisywane do plików na Twoim komputerze…</span>
+              </div>
+            </div>
+            <div class="cr-card-foot">
+              <span class="chip">Szczegóły</span><span class="chip">Usuń</span>
+              <span class="cr-reload"><svg><use href="#i-reload"/></svg></span>
+              <span class="tgl on"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="istep band key" id="krok-4">
+    <div class="wrap">
+      <span class="flag">Najważniejszy krok</span>
+      <div class="istep-head"><span class="n">4</span><h2>Przypnij ikonę do paska narzędzi</h2></div>
+      <p>Tak jak przy instalacji ze sklepu: kliknij ikonę puzzla obok paska adresu i&nbsp;przypnij Protokolanta pinezką. Mrugająca czerwona kropka na ikonie pokazuje, że transkrypcja trwa.</p>
+      <p>Jeśli na stronie <code>chrome://extensions</code> masz włączony przełącznik „Przypnij nowe rozszerzenia do paska narzędzi”, ikona pojawi się na pasku sama.</p>
+      <p><a class="more" href="../instalacja/#krok-3">Zobacz ilustrowaną instrukcję przypinania →</a></p>
+    </div>
+  </section>
+
+  <section class="istep" id="krok-5">
+    <div class="wrap">
+      <div class="istep-head"><span class="n">5</span><h2>Gotowe – dołącz do spotkania</h2></div>
+      <p>Odśwież karty Meet otwarte przed instalacją (F5) i&nbsp;dołącz do spotkania. Dalej wszystko działa tak samo jak w&nbsp;wersji ze sklepu.</p>
+      <p><a class="more" href="../instalacja/#krok-4">Co zobaczysz podczas spotkania →</a></p>
+    </div>
+  </section>
+
+  <section id="aktualizacja" class="band">
+    <div class="wrap">
+      <h2>Aktualizacja wersji testowej</h2>
+      <div class="steps">
+        <div class="step"><h3>Pobierz nową paczkę</h3><p>Najnowsza wersja zawsze jest na tej stronie.</p></div>
+        <div class="step"><h3>Podmień pliki</h3><p>Rozpakuj ją do <b>tego samego folderu</b>, zastępując stare pliki. Dzięki temu zostanie historia spotkań w&nbsp;oknie dodatku.</p></div>
+        <div class="step"><h3>Odśwież dodatek</h3><p>Na stronie <code>chrome://extensions</code> kliknij strzałkę odświeżania na karcie Protokolanta i&nbsp;sprawdź numer wersji.</p></div>
+        <div class="step"><h3>Odśwież Meet</h3><p>Przeładuj otwarte karty Meet (F5).</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="inform">
+    <div class="wrap">
+      <div class="card">
+        <div class="badge"><span></span></div>
+        <div>
+          <h2>Gdy Protokolant pojawi się w&nbsp;Chrome Web Store</h2>
+          <p>Przejdź na wersję ze sklepu – będzie aktualizować się sama. Wersja testowa i&nbsp;wersja ze sklepu to dla Chrome dwa różne dodatki. <b>Nie trzymaj obu naraz</b>, bo każde spotkanie zostanie zapisane podwójnie.</p>
+          <ol class="plain-steps">
+            <li>Na stronie <code>chrome://extensions</code> kliknij „Usuń” na karcie wersji testowej.</li>
+            <li>Zainstaluj Protokolanta ze sklepu według <a href="../instalacja/">instrukcji instalacji</a>.</li>
+            <li>Jeśli nie potrzebujesz trybu dewelopera do niczego innego, wyłącz go i&nbsp;usuń folder z&nbsp;kroku 1.</li>
+          </ol>
+          <p>Pliki z&nbsp;transkrypcjami w&nbsp;folderze Pobrane zostają. Lista ostatnich spotkań w&nbsp;oknie dodatku zacznie się od nowa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../img/rec.svg" width="40" height="40" alt="">Protokolant</a>
+    <div class="links">
+      <p>Kontakt: <a href="mailto:protokolant@marcintabaka.pl">protokolant@marcintabaka.pl</a></p>
+      <p><a href="../instalacja/">Instrukcja instalacji</a></p>
+      <p><a href="../prywatnosc/">Polityka prywatności</a></p>
+      <p><a href="https://github.com/marcintabaka/protokolant">Kod źródłowy (GitHub)</a></p>
+    </div>
+    <div class="legal">
+      <p>Protokolant jest niezależnym projektem i&nbsp;nie jest powiązany z&nbsp;Google LLC ani przez nią wspierany. Google Meet jest znakiem towarowym Google LLC.</p>
+      <p>© 2026 Marcin Tabaka</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.copy').forEach((b) => b.addEventListener('click', async () => {
+    const text = document.getElementById(b.dataset.copy).textContent;
+    try { await navigator.clipboard.writeText(text); b.textContent = 'Skopiowano'; }
+    catch { b.textContent = 'Zaznacz i skopiuj'; }
+    setTimeout(() => { b.textContent = 'Kopiuj'; }, 2000);
+  }));
+</script>
+</body>
+</html>

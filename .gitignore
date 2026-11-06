@@ -1,0 +1,12 @@
+# Dane ze spotkań i zrzuty DOM – nigdy do repo
+dumps/
+transcripts/
+*.jsonl
+*.txt
+dist/
+store/images-src/out/
+
+# Lokalne ustawienia i notatki – nigdy do publicznego repo
+.local.env
+.forbidden-words
+CLAUDE.local.md

@@ -1,0 +1,65 @@
+{
+  "manifest_version": 3,
+  "name": "Protokolant – transkrypcje dla Google Meet™",
+  "short_name": "Protokolant",
+  "version": "1.0.5",
+  "description": "Transkrypcje spotkań Google Meet™ po polsku zapisywane do plików na Twoim komputerze. Za darmo, bez konta, bez wysyłania danych.",
+  "icons": {
+    "16": "icons/rec-16.png",
+    "32": "icons/rec-32.png",
+    "48": "icons/rec-48.png",
+    "128": "icons/rec-128.png"
+  },
+  "permissions": [
+    "storage",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://meet.google.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Protokolant",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/idle-16.png",
+      "32": "icons/idle-32.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://meet.google.com/*"
+      ],
+      "js": [
+        "proto.js",
+        "inject.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://meet.google.com/*"
+      ],
+      "js": [
+        "common.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://chat.google.com/*"
+      ],
+      "js": [
+        "chat-frame.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "world": "MAIN"
+    }
+  ]
+}

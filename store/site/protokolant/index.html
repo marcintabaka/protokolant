@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Protokolant – transkrypcje spotkań Google Meet™ po polsku</title>
+  <meta name="description" content="Bezpłatny dodatek do Chrome, który zapisuje transkrypcje spotkań Google Meet™ po polsku do plików na Twoim komputerze. Bez konta, bez wysyłania danych.">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#3B5BDB">
+  <link rel="canonical" href="https://protokolant.marcintabaka.pl/">
+  <link rel="icon" href="img/rec.svg" type="image/svg+xml">
+  <link rel="icon" href="img/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="img/icon-128.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:site_name" content="Protokolant">
+  <meta property="og:title" content="Protokolant – transkrypcje spotkań Google Meet™ po polsku">
+  <meta property="og:description" content="Bezpłatny dodatek do Chrome. Transkrypcje spotkań zapisywane do plików na Twoim komputerze – bez konta i bez wysyłania danych.">
+  <meta property="og:url" content="https://protokolant.marcintabaka.pl/">
+  <meta property="og:image" content="https://protokolant.marcintabaka.pl/img/og-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Protokolant – transkrypcje spotkań Google Meet™ po polsku">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="img/rec.svg" width="40" height="40" alt="">Protokolant</a>
+    <nav class="nav" aria-label="Sekcje strony">
+      <a href="#jak-to-dziala">Jak to działa</a>
+      <a href="instalacja/">Instalacja</a>
+      <a href="wersja-testowa/">Wersja testowa</a><!-- WERSJA TYMCZASOWA -->
+      <a href="#plik">Plik</a>
+      <a href="#prywatnosc">Prywatność</a>
+      <a href="#pytania">Pytania</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="band hero">
+    <div class="wrap split">
+      <div class="text">
+        <h1>Transkrypcje spotkań w&nbsp;Google Meet™ <em>po&nbsp;polsku</em></h1>
+        <p class="lead">Protokolant to bezpłatny dodatek do przeglądarki Chrome, który zapisuje przebieg spotkań w&nbsp;Google Meet™ jako tekst – automatycznie i&nbsp;bez wysyłania czegokolwiek poza Twój komputer.</p>
+        <ul class="dots">
+          <li>Startuje sam, gdy dołączasz do spotkania – bez włączania napisów</li>
+          <li>Podgląd transkrypcji na żywo w&nbsp;oknie dodatku</li>
+          <li>Po spotkaniu plik ląduje w&nbsp;folderze Pobrane</li>
+        </ul>
+        <div class="cta">
+          <!--
+            ==== LINK DO CHROME WEB STORE ====
+            Gdy dodatek pojawi się w sklepie, zamień poniższy <span class="btn soon">…</span> na:
+            <a class="btn" href="ADRES_KARTY_W_CHROME_WEB_STORE"><span class="dot"></span>Dodaj do Chrome – za darmo</a>
+            Ten sam przycisk jest w instalacja/index.html (krok 1) – podmień w obu plikach
+            (grep -rn "LINK DO CHROME WEB STORE" store/site).
+          -->
+          <span class="btn soon" role="link" aria-disabled="true"><span class="dot"></span>Wkrótce w Chrome Web Store</span>
+          <a class="btn alt" href="wersja-testowa/">Pobierz wersję testową</a><!-- WERSJA TYMCZASOWA -->
+          <span class="cta-side"><small>Za darmo · bez konta · bez wysyłania danych</small><a class="more" href="instalacja/">Jak zainstalować i przypiąć ikonę →</a></span>
+        </div>
+      </div>
+      <div class="visual">
+        <div class="card shot"><img src="img/popup-podglad.png" width="504" height="498" alt="Okno dodatku Protokolant w trakcie spotkania: nazwa spotkania, stan rozmowy, przycisk „Zapisz teraz” i transkrypcja na żywo z godzinami i nazwiskami mówców"></div>
+        <div class="caption">Przykładowe, fikcyjne spotkanie</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="why">
+    <div class="wrap">
+      <div class="card">
+        <img src="img/rec.svg" width="48" height="48" alt="">
+        <div>
+          <h3>Dlaczego Protokolant</h3>
+          <p class="muted">Google Meet™ wyświetla napisy na żywo po polsku, ale oficjalna transkrypcja spotkań nie obsługuje języka polskiego. Protokolant zapisuje to, co rozpoznaje Meet, w&nbsp;czytelnym pliku – tak, żeby nic nie przepadło po zakończeniu rozmowy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="jak-to-dziala">
+    <div class="wrap">
+      <h2>Jak to <em>działa</em></h2>
+      <div class="steps">
+        <div class="step">
+          <h3>Dołączasz do spotkania</h3>
+          <p>Transkrypcja zaczyna się sama, gdy wchodzisz na spotkanie w&nbsp;Google Meet™ w&nbsp;przeglądarce Chrome. Nie musisz włączać napisów – Protokolant odbiera tekst rozpoznany przez Meet w&nbsp;tle i&nbsp;ustawia język polski.</p>
+        </div>
+        <div class="step">
+          <h3>Podglądasz na żywo</h3>
+          <p>Kliknięcie ikony dodatku pokazuje transkrypcję na żywo – z&nbsp;godzinami i&nbsp;nazwiskami mówców.</p>
+        </div>
+        <div class="step">
+          <h3>Wychodzisz – plik się zapisuje</h3>
+          <p>Po opuszczeniu spotkania (albo zamknięciu karty) plik zapisuje się w&nbsp;folderze Pobrane/Protokolant. W&nbsp;każdej chwili możesz też kliknąć „Zapisz teraz”.</p>
+        </div>
+        <div class="step">
+          <h3>Wracasz – dopisuje dalej</h3>
+          <p>Gdy wrócisz do tego samego spotkania tego samego dnia, transkrypcja jest dopisywana do tego samego pliku.</p>
+        </div>
+      </div>
+
+      <div class="status split">
+        <div class="text">
+          <h3>Zawsze wiesz, <em>czy zapis trwa</em></h3>
+          <ul class="dots small">
+            <li>Czerwona kropka na ikonie dodatku mruga, gdy transkrypcja jest w&nbsp;toku</li>
+            <li>Dyskretny pasek statusu na stronie spotkania</li>
+            <li>Potwierdzenie zapisu pliku po wyjściu ze spotkania</li>
+          </ul>
+        </div>
+        <div class="visual panel">
+        <div class="card icons">
+          <div class="ic"><img src="img/idle.svg" width="64" height="64" alt="">poza spotkaniem</div>
+          <div class="ic"><img src="img/rec.svg" width="64" height="64" alt="">transkrypcja trwa</div>
+          <div class="ic"><img src="img/warn.svg" width="64" height="64" alt="">łączenie</div>
+        </div>
+        <div class="card pills">
+          <div class="label">W trakcie spotkania</div>
+          <div class="pill ok">● Transkrypcja: 7 wypowiedzi</div>
+          <div class="label">Po kliknięciu „Opuść rozmowę”</div>
+          <div class="pill gray">■ Protokolant: kończę transkrypcję (7 wypowiedzi) i&nbsp;zapisuję plik…</div>
+          <div class="pill ok">✔ Protokolant: transkrypcja zapisana – Pobrane/Protokolant/2026-11-05_1000_kpt-wzrd-mnq.md</div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="plik" class="band">
+    <div class="wrap split">
+      <div class="text">
+        <h2>Gotowy plik <em>po każdym spotkaniu</em></h2>
+        <ul class="dots small">
+          <li>Nazwa spotkania (np. tytuł wydarzenia z&nbsp;kalendarza), kod i&nbsp;link do spotkania, data, godziny rozpoczęcia i&nbsp;zakończenia oraz lista uczestników</li>
+          <li>Wypowiedzi w&nbsp;formacie „[godzina] Osoba: tekst” – kolejne zdania tej samej osoby są łączone w&nbsp;jedną wypowiedź</li>
+          <li>Twoje wiadomości z&nbsp;czatu spotkania, oznaczone jako „(czat)”</li>
+        </ul>
+        <p class="note">Plik ma format Markdown (.md) – to zwykły tekst, który otworzysz w&nbsp;dowolnym edytorze. Możesz go przeszukać, wkleić do notatek albo przekazać asystentowi AI, żeby przygotował podsumowanie, listę zadań czy protokół ze spotkania.</p>
+      </div>
+      <div class="visual">
+        <div class="card file">
+          <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i>&nbsp;Pobrane / Protokolant / 2026-11-05_1000_kpt-wzrd-mnq.md</div>
+<pre><span class="md-h"># Planowanie sprintu – zespół produktu</span>
+
+<span class="md-k">- **Kod spotkania:**</span> kpt-wzrd-mnq
+<span class="md-k">- **Link:**</span> https://meet.google.com/kpt-wzrd-mnq
+<span class="md-k">- **Data:**</span> 2026-11-05
+<span class="md-k">- **Początek:**</span> 10:00:02
+<span class="md-k">- **Koniec:**</span> 10:31:40
+<span class="md-k">- **Mówcy:**</span> Anna Nowak, Piotr Wiśniewski, Katarzyna Zielińska
+<span class="md-k">- **Uczestnicy:**</span> Anna Nowak, Piotr Wiśniewski, Katarzyna Zielińska
+<span class="md-k">- **Liczba wypowiedzi:**</span> 7
+<span class="md-k">- **Wiadomości na czacie:**</span> 1
+<span class="md-k">- **Źródło:**</span> napisy Google Meet (kanał WebRTC), Protokolant 1.0
+
+<span class="md-t">---</span>
+
+<span class="md-t">[10:00:05]</span><span class="md-s"> Anna Nowak</span><span class="md-c">:</span> dzień dobry wszystkim zaczynamy od przeglądu zadań z poprzedniego sprintu Piotrze jak wygląda integracja z płatnościami
+
+<span class="md-t">[10:00:21]</span><span class="md-s"> Piotr Wiśniewski</span><span class="md-c">:</span> integracja jest prawie gotowa zostały testy na środowisku testowym myślę że do czwartku zamkniemy temat
+
+<span class="md-t">[10:00:40]</span><span class="md-s"> Katarzyna Zielińska</span><span class="md-c">:</span> dorzucę że klient prosił o dodatkowy raport miesięczny więc warto uwzględnić go w planie
+
+<span class="md-t">[10:00:52]</span><span class="md-s"> Anna Nowak</span><span class="md-c"> (czat):</span> https://example.com/raport-wymagania
+
+<span class="md-t">[10:01:03]</span><span class="md-s"> Anna Nowak</span><span class="md-c">:</span> dobrze dopisuję raport jako osobne zadanie Kasiu przygotujesz krótką specyfikację do piątku</pre>
+        </div>
+        <div class="caption">Fragment przykładowego pliku z&nbsp;fikcyjnego spotkania</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prywatnosc">
+    <div class="wrap split rev">
+      <div class="text">
+        <h2>Prywatnie <em>i&nbsp;za darmo</em></h2>
+        <ul class="dots green small">
+          <li>Wszystko zostaje na Twoim komputerze. Protokolant nie ma serwera, nie wysyła transkrypcji ani żadnych innych danych, nie używa analityki ani reklam.</li>
+          <li>Nie wymaga zakładania konta ani logowania.</li>
+          <li>Ostatnie 30 spotkań jest przechowywanych w&nbsp;pamięci przeglądarki, żeby nic nie zginęło, gdy karta niespodziewanie się zamknie. Możesz je usunąć jednym kliknięciem w&nbsp;oknie dodatku.</li>
+        </ul>
+        <p class="note">Szczegóły: <a href="prywatnosc/">polityka prywatności</a>. Ta strona również nie używa plików cookie ani analityki. Kod źródłowy dodatku jest publiczny – możesz sprawdzić, co robi: <a href="https://github.com/marcintabaka/protokolant">GitHub</a>.</p>
+      </div>
+      <div class="visual">
+        <div class="card shot"><img src="img/popup-ustawienia.png" width="504" height="279" alt="Okno dodatku: lista ostatnich transkrypcji z przyciskami „Pobierz” i usuwania, odnośnik „usuń wszystkie” oraz ustawienia – język napisów i opcja informowania uczestników na czacie"></div>
+        <div class="caption">Historia ostatnich spotkań i&nbsp;ustawienia w&nbsp;oknie dodatku</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="informowanie" class="inform" style="padding-top: 0">
+    <div class="wrap">
+      <div class="card">
+        <div class="badge"><span></span></div>
+        <div>
+          <h2>Poinformuj uczestników</h2>
+          <p>Nagrywanie lub transkrybowanie rozmowy bez wiedzy rozmówców może naruszać ich prywatność i&nbsp;przepisy. Poinformuj uczestników, że rozmowa jest transkrybowana.</p>
+          <p>Protokolant może to zrobić za Ciebie: po włączeniu opcji „Informuj uczestników na czacie, że rozmowa jest transkrybowana” w&nbsp;ustawieniach dodatku wyśle na czacie spotkania krótką informację o&nbsp;transkrypcji. Opcja jest domyślnie wyłączona.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pytania" class="band">
+    <div class="wrap">
+      <h2>Ograniczenia <em>i&nbsp;pytania</em></h2>
+      <div class="faq">
+        <div class="card">
+          <h3>Jak dokładny jest tekst?</h3>
+          <p>Jakość tekstu zależy od rozpoznawania mowy w&nbsp;Google Meet™ – Protokolant zapisuje dokładnie to, co rozpoznaje Meet. W&nbsp;języku polskim Meet nie wstawia znaków interpunkcyjnych, dlatego w&nbsp;pliku nie ma kropek ani przecinków.</p>
+        </div>
+        <div class="card">
+          <h3>Gdzie działa?</h3>
+          <p>W przeglądarce Chrome na komputerze (Windows, macOS, Linux). Nie obejmuje spotkań prowadzonych w&nbsp;aplikacji mobilnej.</p>
+        </div>
+        <div class="card">
+          <h3>Czy zapisuje czat?</h3>
+          <p>Tak, ale tylko Twoje wiadomości z&nbsp;czatu spotkania – w&nbsp;pliku są oznaczone jako „(czat)”.</p>
+        </div>
+        <div class="card">
+          <h3>Co, jeśli Google zmieni Meet?</h3>
+          <p>Protokolant korzysta z&nbsp;mechanizmów Google Meet™, które Google może zmienić. Jeśli po takiej zmianie coś przestanie działać, wydam poprawioną wersję.</p>
+        </div>
+        <div class="card">
+          <h3>Jakich uprawnień potrzebuje?</h3>
+          <ul>
+            <li>Dostęp do meet.google.com – odczyt tekstu rozpoznanego przez Meet w&nbsp;trakcie spotkania, nazwy spotkania i&nbsp;listy uczestników.</li>
+            <li>Dostęp do chat.google.com – obsługa czatu spotkania, gdy Meet wyświetla go w&nbsp;osadzonym oknie Google Chat.</li>
+            <li>Pobieranie plików – zapis transkrypcji w&nbsp;folderze Pobrane.</li>
+            <li>Pamięć przeglądarki – bufor ostatnich transkrypcji i&nbsp;ustawienia dodatku.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Ile to kosztuje?</h3>
+          <p>Nic. Protokolant jest bezpłatny, nie wymaga konta i&nbsp;nie wyświetla reklam.</p>
+          <h3 style="margin-top: 20px">Pytania, błędy, pomysły?</h3>
+          <p>Napisz do mnie: <a href="mailto:protokolant@marcintabaka.pl">protokolant@marcintabaka.pl</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="./"><img src="img/rec.svg" width="40" height="40" alt="">Protokolant</a>
+    <div class="links">
+      <p>Kontakt: <a href="mailto:protokolant@marcintabaka.pl">protokolant@marcintabaka.pl</a></p>
+      <p><a href="instalacja/">Instrukcja instalacji</a></p>
+      <p><a href="prywatnosc/">Polityka prywatności</a></p>
+      <p><a href="https://github.com/marcintabaka/protokolant">Kod źródłowy (GitHub)</a></p>
+    </div>
+    <div class="legal">
+      <p>Protokolant jest niezależnym projektem i&nbsp;nie jest powiązany z&nbsp;Google LLC ani przez nią wspierany. Google Meet jest znakiem towarowym Google LLC.</p>
+      <p>© 2026 Marcin Tabaka</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <title>Protokolant</title>
+  <style>
+    body { font: 13px/1.45 system-ui, sans-serif; width: 480px; margin: 0; padding: 12px; color: #1f1f1f; }
+    h1 { font-size: 14px; margin: 0 0 8px; }
+    h2 { font-size: 12px; margin: 12px 0 6px; text-transform: uppercase; color: #666; letter-spacing: .04em; display: flex; align-items: baseline; gap: 8px; }
+    h2 .grow { flex: 1; }
+    h2 a { text-transform: none; letter-spacing: 0; font-weight: normal; color: #1a73e8; cursor: pointer; }
+    .box { border: 1px solid #ddd; border-radius: 8px; padding: 8px 10px; }
+    .row { display: flex; gap: 6px; margin: 2px 0; align-items: center; }
+    .row b { min-width: 92px; font-weight: 600; }
+    .ok { color: #1a7f37; } .warn { color: #b07800; } .bad { color: #c62828; font-weight: 600; }
+    .muted { color: #777; font-size: 11px; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    select { font: inherit; }
+    button { font: inherit; padding: 4px 10px; border-radius: 6px; border: 1px solid #bbb; background: #f6f6f6; cursor: pointer; }
+    button.primary { background: #1a73e8; border-color: #1a73e8; color: #fff; }
+    button:disabled { opacity: .5; cursor: default; }
+    #transcript { max-height: 260px; overflow-y: auto; border: 1px solid #ddd; border-radius: 8px; padding: 6px 10px; background: #fafafa; }
+    #transcript p { margin: 0 0 6px; }
+    #transcript .t { color: #888; font-variant-numeric: tabular-nums; margin-right: 4px; }
+    #transcript .s { font-weight: 600; }
+    #transcript .m { color: #888; font-style: italic; }
+    #transcript .chat { background: #eef4fd; border-radius: 4px; padding: 2px 4px; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    li { display: flex; align-items: center; gap: 6px; padding: 4px 0; border-bottom: 1px solid #eee; }
+    li .t { flex: 1; min-width: 0; cursor: pointer; }
+    li .t:hover div:first-child { color: #1a73e8; }
+    li .t div { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    li.active .t div:first-child { font-weight: 600; }
+    li button { padding: 2px 6px; font-size: 12px; }
+    #msg { margin-top: 8px; font-size: 12px; min-height: 1em; }
+    label { display: flex; align-items: center; gap: 6px; }
+    details { margin-top: 10px; }
+    summary { font-size: 12px; text-transform: uppercase; color: #666; letter-spacing: .04em; cursor: pointer; }
+    .help { margin: 0; padding-left: 18px; }
+    .help li { display: list-item; border: 0; padding: 1px 0; }
+  </style>
+</head>
+<body>
+  <h1>Protokolant <span class="muted" id="ver"></span></h1>
+
+  <div class="box" id="status">Ładowanie…</div>
+  <div class="buttons">
+    <button class="primary" id="save" disabled>Zapisz teraz</button>
+  </div>
+
+  <h2><span class="grow" id="tr-title">Transkrypcja</span><a id="tr-live" hidden>← bieżąca rozmowa</a></h2>
+  <div id="transcript"><span class="muted">Brak transkrypcji do pokazania.</span></div>
+
+  <h2><span class="grow">Ostatnie transkrypcje (bufor)</span><a id="rm-all" hidden>usuń wszystkie</a></h2>
+  <ul id="sessions"></ul>
+
+  <h2>Ustawienia</h2>
+  <div class="row"><b>Język napisów</b>
+    <select id="language">
+      <option value="pl-PL">polski (pl-PL)</option>
+      <option value="en-US">angielski (en-US)</option>
+      <option value="">nie zmieniaj (jak w Meet)</option>
+    </select>
+  </div>
+  <div class="row">
+    <label><input type="checkbox" id="chatNotice"> Informuj uczestników na czacie, że rozmowa jest transkrybowana</label>
+  </div>
+
+  <details id="diag">
+    <summary>Diagnostyka</summary>
+    <div class="row">
+      <label><input type="checkbox" id="debug"> Tryb debug</label>
+      <button id="dlog" disabled>Pobierz log debug</button>
+      <button id="dchat" disabled title="Otwórz najpierw panel czatu w Meet">Zrzuć ramkę czatu</button>
+    </div>
+    <div class="muted" id="diag-info"></div>
+  </details>
+
+  <div id="msg"></div>
+
+  <script src="common.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

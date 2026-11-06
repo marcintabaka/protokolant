@@ -1,0 +1,37 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="style.css">
+<style>
+  .card { width: 640px; background: #1e1f24; color: #d7dae0; }
+  .bar { background: #2a2c33; padding: 10px 16px; font: 13px 'Segoe UI'; color: #a9adb8; display: flex; gap: 8px; align-items: center; }
+  .bar i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+  pre { margin: 0; padding: 18px 22px; font: 13.5px/1.55 Consolas, monospace; white-space: pre-wrap; height: 560px; overflow: hidden; }
+  .h { color: #82aaff; font-weight: bold; } .k { color: #c792ea; } .t { color: #7f8696; } .s { color: #ffcb6b; } .c { color: #89ddff; }
+</style>
+<script src="sample.js"></script><script src="stub.js"></script><script src="../../extension/common.js"></script></head>
+<body>
+  <div class="text">
+    <div class="brand"><img src="../../design/icons/B1/rec.svg">Protokolant</div>
+    <h1>Gotowy plik <em>po każdym spotkaniu</em></h1>
+    <ul>
+      <li>Nazwa spotkania z kalendarza, uczestnicy, czas trwania</li>
+      <li>Kto, kiedy i co powiedział – wypowiedzi połączone w całość</li>
+      <li>Format Markdown – do notatek albo dla asystenta AI</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i>&nbsp; Pobrane / Protokolant / <span id="fn"></span></div>
+    <pre id="md"></pre>
+  </div>
+  <div class="foot">Przykładowe, fikcyjne spotkanie. Google Meet jest znakiem towarowym Google LLC.</div>
+<script>
+  const s = SAMPLE.session;
+  document.getElementById('fn').textContent = Protokolant.sessionFilename(s).split('/').pop();
+  const esc = (x) => x.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]);
+  document.getElementById('md').innerHTML = Protokolant.buildMarkdown(s).split('\n').map((l) => {
+    l = esc(l);
+    if (l.startsWith('# ')) return `<span class="h">${l}</span>`;
+    if (l.startsWith('- **')) return l.replace(/^(- \*\*[^*]+\*\*)/, '<span class="k">$1</span>');
+    if (l.startsWith('---')) return `<span class="t">${l}</span>`;
+    return l.replace(/^(\[[\d:]+\])( [^:]+?)(:| \(czat\):)/, '<span class="t">$1</span><span class="s">$2</span><span class="c">$3</span>');
+  }).join('\n');
+</script>
+</body></html>

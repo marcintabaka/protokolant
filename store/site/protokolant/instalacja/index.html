@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instalacja Protokolanta krok po kroku – dodaj do Chrome i przypnij ikonę</title>
+  <meta name="description" content="Jak zainstalować Protokolanta w Chrome i przypiąć jego ikonę do paska narzędzi, żeby widzieć, czy transkrypcja spotkania Google Meet™ trwa.">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#3B5BDB">
+  <link rel="canonical" href="https://protokolant.marcintabaka.pl/instalacja/">
+  <link rel="icon" href="../img/rec.svg" type="image/svg+xml">
+  <link rel="icon" href="../img/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../img/icon-128.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:site_name" content="Protokolant">
+  <meta property="og:title" content="Instalacja Protokolanta krok po kroku">
+  <meta property="og:description" content="Dodaj Protokolanta do Chrome i przypnij ikonę do paska narzędzi – mrugająca czerwona kropka pokazuje, że transkrypcja trwa.">
+  <meta property="og:url" content="https://protokolant.marcintabaka.pl/instalacja/">
+  <meta property="og:image" content="https://protokolant.marcintabaka.pl/img/og-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Protokolant – transkrypcje spotkań Google Meet™ po polsku">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<!-- Ikony do ilustracji paska Chrome: proste, własne kształty (nie grafiki Google). -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-puzzle" viewBox="0 0 24 24"><path fill="currentColor" d="M3 7.5h4.3a2.7 2.7 0 1 1 5.4 0H17v4.3a2.7 2.7 0 1 1 0 5.4V21.5H3z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M8.5 3.5h7M9.8 3.5v5.2L6.8 13h10.4l-3-4.3V3.5M12 13v7.5"/></symbol>
+  <symbol id="i-pinned" viewBox="0 0 24 24"><path fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M8.5 3.5h7M9.8 3.5v5.2L6.8 13h10.4l-3-4.3V3.5z"/><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 13v7.5"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M12 3.8l2.5 5.1 5.6.8-4.1 3.9 1 5.6-5-2.7-5 2.7 1-5.6-4.1-3.9 5.6-.8z"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="12" cy="5.5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="18.5" r="1.8"/></g></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><g fill="none" stroke="currentColor"><circle cx="12" cy="12" r="7" stroke-width="3.2" stroke-dasharray="2.75 2.75"/><circle cx="12" cy="12" r="5.2" stroke-width="1.8"/><circle cx="12" cy="12" r="2" stroke-width="1.8"/></g></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="10.5" width="12" height="9" rx="2"/><path d="M8.8 10.5V8a3.2 3.2 0 0 1 6.4 0v2.5"/></g></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../img/rec.svg" width="40" height="40" alt="">Protokolant</a>
+    <nav class="nav" aria-label="Strony">
+      <a href="../#jak-to-dziala">Jak to działa</a>
+      <a href="./" aria-current="page">Instalacja</a>
+      <a href="../wersja-testowa/">Wersja testowa</a><!-- WERSJA TYMCZASOWA -->
+      <a href="../#plik">Plik</a>
+      <a href="../#prywatnosc">Prywatność</a>
+      <a href="../#pytania">Pytania</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="band hero page-hero">
+    <div class="wrap">
+      <h1>Instalacja <em>krok po kroku</em></h1>
+      <p class="lead">Instalacja zajmuje minutę. Najważniejszy jest krok 3 – przypięcie ikony Protokolanta do paska narzędzi. To ona pokazuje, czy transkrypcja trwa, i&nbsp;otwiera podgląd.</p>
+      <ol class="toc">
+        <li><a href="#krok-1">Dodaj do Chrome</a></li>
+        <li><a href="#krok-2">Potwierdź</a></li>
+        <li class="key"><a href="#krok-3">Przypnij ikonę</a></li>
+        <li><a href="#krok-4">Dołącz do spotkania</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <section class="istep" id="krok-1">
+    <div class="wrap split">
+      <div class="text">
+        <div class="istep-head"><span class="n">1</span><h2>Dodaj Protokolanta do&nbsp;Chrome</h2></div>
+        <p>Otwórz kartę Protokolanta w&nbsp;Chrome Web Store w&nbsp;przeglądarce Chrome na komputerze (Windows, macOS, Linux) i&nbsp;kliknij „Dodaj do Chrome”. Dodatek jest bezpłatny i&nbsp;nie wymaga konta.</p>
+        <div class="cta">
+          <!--
+            ==== LINK DO CHROME WEB STORE ====
+            Gdy dodatek pojawi się w sklepie, zamień poniższy <span class="btn soon">…</span> na:
+            <a class="btn" href="ADRES_KARTY_W_CHROME_WEB_STORE"><span class="dot"></span>Otwórz w Chrome Web Store</a>
+            Ten sam przycisk jest na stronie głównej (../index.html) – podmień w obu plikach
+            (grep -rn "LINK DO CHROME WEB STORE" store/site).
+          -->
+          <span class="btn soon" role="link" aria-disabled="true"><span class="dot"></span>Wkrótce w Chrome Web Store</span>
+        </div>
+        <p class="note"><!-- WERSJA TYMCZASOWA -->Nie chcesz czekać na publikację w&nbsp;sklepie? Zainstaluj <a href="../wersja-testowa/">wersję testową z&nbsp;paczki ZIP</a>.</p>
+      </div>
+      <div class="visual">
+        <div class="card perm-card">
+          <ul class="perm">
+            <li><b>Potrzebujesz</b>przeglądarki Chrome na komputerze. Spotkania w&nbsp;aplikacji mobilnej Meet nie są obsługiwane.</li>
+            <li><b>Nie potrzebujesz</b>konta, logowania ani włączania napisów w&nbsp;Meet.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="istep" id="krok-2">
+    <div class="wrap split">
+      <div class="text">
+        <div class="istep-head"><span class="n">2</span><h2>Potwierdź dodanie rozszerzenia</h2></div>
+        <p>Chrome zapyta, czy dodać rozszerzenie, i&nbsp;pokaże, do czego będzie ono miało dostęp. Kliknij „Dodaj rozszerzenie”.</p>
+        <p>Chrome opisuje uprawnienia ogólnie, np. jako odczytywanie i&nbsp;zmienianie danych na stronach Meet. Protokolant używa ich tylko do tego, co opisuję obok, i&nbsp;niczego nie wysyła poza Twój komputer. Szczegóły: <a href="../prywatnosc/">polityka prywatności</a>.</p>
+      </div>
+      <div class="visual">
+        <div class="card perm-card">
+          <ul class="perm">
+            <li><b>meet.google.com</b>odczyt tekstu rozpoznanego przez Meet w&nbsp;trakcie spotkania, nazwy spotkania i&nbsp;listy uczestników</li>
+            <li><b>chat.google.com</b>obsługa czatu spotkania, gdy Meet wyświetla go w&nbsp;osadzonym oknie Google Chat</li>
+            <li><b>Pobieranie plików</b>zapis transkrypcji w&nbsp;folderze Pobrane</li>
+          </ul>
+          <div class="perm-foot">Do tego pamięć przeglądarki: bufor ostatnich transkrypcji i&nbsp;ustawienia dodatku.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="istep band key" id="krok-3">
+    <div class="wrap">
+      <span class="flag">Najważniejszy krok</span>
+      <div class="istep-head"><span class="n">3</span><h2>Przypnij ikonę do paska narzędzi</h2></div>
+      <p>Po instalacji Chrome chowa ikonę nowego rozszerzenia w&nbsp;menu „Rozszerzenia”. Wyciągnij ją na pasek – zajmie to kilka sekund.</p>
+
+      <div class="why-box">
+        <div class="icon"><span class="blink"><img src="../img/rec.svg" width="40" height="40" alt=""><img src="../img/dim.svg" width="40" height="40" alt=""></span></div>
+        <div>
+          <h3>Dlaczego to ważne?</h3>
+          <p><b>Ikona pokazuje stan transkrypcji.</b> Gdy zapis trwa, czerwona kropka na ikonie mruga. Jeśli ikona jest schowana w&nbsp;menu, nie widzisz, czy spotkanie jest transkrybowane.</p>
+          <p><b>Ikona otwiera okno dodatku.</b> Jedno kliknięcie pokazuje transkrypcję na żywo, przycisk „Zapisz teraz”, historię ostatnich spotkań i&nbsp;ustawienia.</p>
+        </div>
+      </div>
+
+      <div class="subs">
+        <div class="sub">
+          <div class="cr cr-fig" role="img" aria-label="Pasek narzędzi Chrome; ikona puzzla „Rozszerzenia” po prawej stronie paska adresu jest zaznaczona">
+            <div class="cr-bar">
+              <div class="cr-omni"><svg><use href="#i-lock"/></svg><span class="url">example.com</span><svg class="star"><use href="#i-star"/></svg></div>
+              <span class="cr-btn hl"><svg><use href="#i-puzzle"/></svg><span class="cr-tip">Rozszerzenia</span></span>
+              <span class="cr-avatar"></span>
+              <span class="cr-btn"><svg><use href="#i-more"/></svg></span>
+            </div>
+          </div>
+          <h3><span>3a</span>Kliknij ikonę puzzla</h3>
+          <p>Ikona „Rozszerzenia” jest na pasku narzędzi po prawej stronie paska adresu.</p>
+        </div>
+
+        <div class="sub">
+          <div class="cr" role="img" aria-label="Panel „Rozszerzenia” z listą rozszerzeń; przy Protokolancie zaznaczona ikona pinezki">
+            <div class="cr-panel">
+              <div class="cr-head">Rozszerzenia<span class="cr-btn"><svg><use href="#i-close"/></svg></span></div>
+              <div class="cr-sec"><b>Nie potrzebują dostępu</b><span>Te rozszerzenia nie muszą odczytywać ani zmieniać informacji na tej stronie.</span></div>
+              <div class="cr-row dim"><span class="ph"></span><span class="name">Inne rozszerzenie</span><span class="cr-btn"><svg><use href="#i-pin"/></svg></span><span class="cr-btn"><svg><use href="#i-more"/></svg></span></div>
+              <div class="cr-row on"><img src="../img/idle.svg" width="18" height="18" alt=""><span class="name">Protokolant – transkrypcje dla Google Meet™</span><span class="cr-btn hl"><svg><use href="#i-pin"/></svg></span><span class="cr-btn"><svg><use href="#i-more"/></svg></span></div>
+              <div class="cr-foot"><svg><use href="#i-gear"/></svg>Zarządzaj rozszerzeniami</div>
+            </div>
+          </div>
+          <h3><span>3b</span>Kliknij pinezkę przy Protokolancie</h3>
+          <p>Na liście znajdź „Protokolant – transkrypcje dla Google Meet™” i&nbsp;kliknij ikonę pinezki obok nazwy. Pinezka zmieni kolor na niebieski.</p>
+          <p>Protokolant może być w&nbsp;sekcji „Pełny dostęp” albo „Nie potrzebują dostępu” – zależy to od strony otwartej w&nbsp;bieżącej karcie.</p>
+        </div>
+
+        <div class="sub">
+          <div class="cr cr-fig" role="img" aria-label="Pasek narzędzi Chrome po przypięciu: ikona Protokolanta z szarą kropką obok ikony puzzla">
+            <div class="cr-bar">
+              <div class="cr-omni"><svg><use href="#i-lock"/></svg><span class="url">example.com</span><svg class="star"><use href="#i-star"/></svg></div>
+              <span class="cr-btn hl"><img src="../img/idle.svg" width="20" height="20" alt=""><span class="cr-tip">Protokolant</span></span>
+              <span class="cr-btn"><svg><use href="#i-puzzle"/></svg></span>
+              <span class="cr-avatar"></span>
+              <span class="cr-btn"><svg><use href="#i-more"/></svg></span>
+            </div>
+          </div>
+          <h3><span>3c</span>Ikona jest na stałe na pasku</h3>
+          <p>Ikona dokumentu z&nbsp;kropką jest teraz zawsze widoczna obok paska adresu. Poza spotkaniem kropka jest szara.</p>
+        </div>
+      </div>
+      <p class="note tip"><b>Ikona jest już na pasku?</b> Nowsze wersje Chrome mają na stronie <code>chrome://extensions</code> przełącznik „Przypnij nowe rozszerzenia do paska narzędzi”. Gdy jest włączony, Chrome przypina Protokolanta sam i&nbsp;ten krok możesz pominąć.</p>
+      <p class="fig-note">Ilustracje są uproszczone. Wygląd paska i&nbsp;menu może się nieco różnić w&nbsp;zależności od wersji Chrome, systemu i&nbsp;motywu.</p>
+    </div>
+  </section>
+
+  <section class="istep" id="krok-4">
+    <div class="wrap">
+      <div class="split">
+        <div class="text">
+          <div class="istep-head"><span class="n">4</span><h2>Gotowe – dołącz do spotkania</h2></div>
+          <p>Wejdź na spotkanie w&nbsp;Google Meet™. Kropka na ikonie zmieni kolor na czerwony i&nbsp;zacznie mrugać – transkrypcja trwa. Kliknij ikonę, żeby zobaczyć podgląd na żywo.</p>
+          <p>Po wyjściu ze spotkania (albo zamknięciu karty) plik zapisze się w&nbsp;folderze Pobrane/Protokolant. Jeśli chcesz, żeby uczestnicy dostali na czacie informację o&nbsp;transkrypcji, włącz tę opcję w&nbsp;ustawieniach dodatku (<a href="../#informowanie">więcej</a>).</p>
+        </div>
+        <div class="visual">
+          <div class="cr" role="img" aria-label="Pasek narzędzi Chrome podczas spotkania w Google Meet: ikona Protokolanta z mrugającą czerwoną kropką" style="width: 440px; max-width: 100%">
+            <div class="cr-bar">
+              <div class="cr-omni"><svg><use href="#i-lock"/></svg><span class="url">meet.google.com/kpt-wzrd-mnq</span><svg class="star"><use href="#i-star"/></svg></div>
+              <span class="cr-btn"><span class="blink"><img src="../img/rec.svg" width="20" height="20" alt=""><img src="../img/dim.svg" width="20" height="20" alt=""></span></span>
+              <span class="cr-btn"><svg><use href="#i-puzzle"/></svg></span>
+              <span class="cr-avatar"></span>
+              <span class="cr-btn"><svg><use href="#i-more"/></svg></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="states">
+        <div class="state"><div class="ico"><img src="../img/idle.svg" width="44" height="44" alt=""></div><div><h3>Szara kropka</h3><p>Poza spotkaniem – nic nie jest zapisywane.</p></div></div>
+        <div class="state"><div class="ico"><span class="blink"><img src="../img/rec.svg" width="44" height="44" alt=""><img src="../img/dim.svg" width="44" height="44" alt=""></span></div><div><h3>Czerwona, mruga</h3><p>Transkrypcja trwa.</p></div></div>
+        <div class="state"><div class="ico"><img src="../img/warn.svg" width="44" height="44" alt=""></div><div><h3>Pomarańczowa</h3><p>Łączenie z&nbsp;napisami Meet – zwykle trwa chwilę.</p></div></div>
+        <div class="state"><div class="ico"><img src="../img/warn.svg" width="44" height="44" alt=""><span class="bdg">!</span></div><div><h3>Pomarańczowa z&nbsp;„!”</h3><p>Problem – transkrypcja nie jest zapisywana. Pasek statusu na stronie spotkania podpowie, co zrobić (najczęściej: odśwież kartę).</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="problemy" class="band">
+    <div class="wrap">
+      <h2>Problemy?</h2>
+      <div class="faq">
+        <div class="card">
+          <h3>Karta Meet była otwarta przed instalacją</h3>
+          <p>Odśwież ją (F5). Protokolant zaczyna działać na stronach Meet otwartych po instalacji. Gdy wrócisz do tego samego spotkania tego samego dnia, transkrypcja zostanie dopisana do tego samego pliku.</p>
+        </div>
+        <div class="card">
+          <h3>Nie widzę ikony Protokolanta</h3>
+          <p>Ikona jest schowana w&nbsp;menu „Rozszerzenia” – przypnij ją do paska, jak w&nbsp;<a href="#krok-3">kroku 3</a>.</p>
+        </div>
+        <div class="card">
+          <h3>Ikona ma pomarańczową kropkę z&nbsp;„!”</h3>
+          <p>Przeczytaj komunikat na pasku statusu na stronie spotkania. Zwykle wystarczy odświeżyć kartę spotkania (F5) i&nbsp;dołączyć ponownie.</p>
+        </div>
+        <div class="card">
+          <h3>Nadal coś nie działa?</h3>
+          <p>Napisz do mnie: <a href="mailto:protokolant@marcintabaka.pl">protokolant@marcintabaka.pl</a>. Opisz, co widzisz na ikonie i&nbsp;na pasku statusu w&nbsp;Meet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../img/rec.svg" width="40" height="40" alt="">Protokolant</a>
+    <div class="links">
+      <p>Kontakt: <a href="mailto:protokolant@marcintabaka.pl">protokolant@marcintabaka.pl</a></p>
+      <p><a href="./">Instrukcja instalacji</a></p>
+      <p><a href="../prywatnosc/">Polityka prywatności</a></p>
+      <p><a href="https://github.com/marcintabaka/protokolant">Kod źródłowy (GitHub)</a></p>
+    </div>
+    <div class="legal">
+      <p>Protokolant jest niezależnym projektem i&nbsp;nie jest powiązany z&nbsp;Google LLC ani przez nią wspierany. Google Meet jest znakiem towarowym Google LLC.</p>
+      <p>© 2026 Marcin Tabaka</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
