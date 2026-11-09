@@ -15,7 +15,7 @@ Przed commitem uruchom: `node tests/format.test.js`, `node tests/chat-frame.sim.
 
 ## Paczka do Chrome Web Store
 
-Identyfikator w Chrome Web Store: `lhpjlgaeofddngnfdbheodoemmkpcdjb`; karta: `https://chromewebstore.google.com/detail/lhpjlgaeofddngnfdbheodoemmkpcdjb`.
+Dodatek jest opublikowany w Chrome Web Store (od listopada 2026). Identyfikator: `lhpjlgaeofddngnfdbheodoemmkpcdjb`; karta: `https://chromewebstore.google.com/detail/lhpjlgaeofddngnfdbheodoemmkpcdjb` (linkują do niej przyciski na stronie głównej i w `instalacja/`).
 
 `python3 -I scripts/build-zip.py` sprawdza manifest, pliki, składnię i niechciane treści, uruchamia testy i buduje `dist/protokolant-<wersja>.zip`. Nie nadpisuje paczki istniejącej wersji – przed publikacją podbij wersję. Ikony: `scripts/build-icons.sh [B1|B2]`, grafiki do sklepu: `scripts/build-store-images.sh`.
 
@@ -23,7 +23,7 @@ Identyfikator w Chrome Web Store: `lhpjlgaeofddngnfdbheodoemmkpcdjb`; karta: `ht
 
 Źródło: `store/site/protokolant/` (`index.html`, wspólny `style.css`, `img/`, instrukcja `instalacja/`, polityka `prywatnosc/`, tymczasowa `wersja-testowa/`), publikacja: https://protokolant.marcintabaka.pl/. Wgranie i weryfikacja: `scripts/deploy-site.sh` (serwer i katalog w lokalnym `.local.env`). Adresu polityki (`/prywatnosc/`) nie wolno zmieniać – jest podany w Chrome Web Store. Strona nie ładuje nic z zewnątrz (bez czcionek z sieci, CDN, analityki i ciasteczek). Obrazki strony: `store/site/build-images.sh`.
 
-Gdy dodatek pojawi się w sklepie: podmień przycisk „Wkrótce w Chrome Web Store” (komentarz `LINK DO CHROME WEB STORE` w `index.html` i `instalacja/index.html`) oraz usuń wersję testową – wszystkie miejsca oznaczone `WERSJA TYMCZASOWA` (`grep -rn "WERSJA TYMCZASOWA" store/site scripts`), a na serwerze katalog `wersja-testowa/`.
+`wersja-testowa/` nie oferuje już paczki ZIP – to ukryta (bez linku w nawigacji, `noindex`) instrukcja dla osób z wersją testową: jak ją usunąć i zainstalować dodatek ze sklepu. Gdy przestanie być potrzebna, usuń wszystkie miejsca oznaczone `WERSJA TYMCZASOWA` (`grep -rn "WERSJA TYMCZASOWA" store/site scripts`), a na serwerze katalog `wersja-testowa/`.
 
 ## Publiczne repozytorium
 

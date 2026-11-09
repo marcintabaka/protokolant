@@ -58,9 +58,7 @@ section { padding: 88px 0; }
 .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
 .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; border-radius: 10px; font-size: 17px; font-weight: 600; text-decoration: none; background: var(--indigo); color: #fff; box-shadow: 0 6px 18px rgba(59, 91, 219, .3); }
 .btn:hover { background: var(--indigo-dark); color: #fff; }
-.btn.soon { background: #e9ecf5; color: #5b6178; box-shadow: none; cursor: default; }
 .btn .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px var(--red-ring); }
-.btn.soon .dot { background: #adb5bd; box-shadow: 0 0 0 3px #dee2e6; }
 .cta small { font-size: 15px; color: var(--muted); }
 .cta-side { display: flex; flex-direction: column; gap: 2px; }
 .more { font-size: 15px; font-weight: 600; text-decoration: none; }
@@ -100,6 +98,7 @@ section { padding: 88px 0; }
 .file pre { margin: 0; padding: 18px 22px; font: 13.5px/1.55 Consolas, "SF Mono", Menlo, "DejaVu Sans Mono", monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
 .md-h { color: #82aaff; font-weight: bold; } .md-k { color: #c792ea; } .md-t { color: #7f8696; } .md-s { color: #ffcb6b; } .md-c { color: #89ddff; }
 .note { font-size: 16px; color: var(--muted); }
+.cta + .note { margin-top: 18px; }
 
 /* Informowanie uczestników */
 .inform .card { padding: 36px 40px; display: flex; gap: 32px; align-items: flex-start; border-left: 6px solid var(--red); }
@@ -312,7 +311,7 @@ footer .legal p { margin: 0 0 4px; }
   .prose td:first-child { white-space: normal; }
 }
 
-/* ===== WERSJA TYMCZASOWA: podstrona /wersja-testowa/ (usuń po publikacji w Chrome Web Store) ===== */
+/* ===== WERSJA TYMCZASOWA: podstrona /wersja-testowa/ (przejście z wersji testowej na wersję ze sklepu; usuń razem z nią) ===== */
 .btn.alt { background: #fff; color: var(--indigo); box-shadow: inset 0 0 0 2px var(--indigo); }
 .btn.alt:hover { background: var(--indigo-soft); color: var(--indigo-dark); }
 .page-hero .cta { margin-bottom: 30px; }

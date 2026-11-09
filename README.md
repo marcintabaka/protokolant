@@ -5,7 +5,7 @@ Dodatek do Chrome, który zapisuje transkrypcje spotkań Google Meet™ po polsk
 - Strona: https://protokolant.marcintabaka.pl/
 - Instrukcja instalacji: https://protokolant.marcintabaka.pl/instalacja/
 - Polityka prywatności: https://protokolant.marcintabaka.pl/prywatnosc/
-- Chrome Web Store: w trakcie weryfikacji; do tego czasu [wersja testowa z paczki ZIP](https://protokolant.marcintabaka.pl/wersja-testowa/)
+- Chrome Web Store: https://chromewebstore.google.com/detail/lhpjlgaeofddngnfdbheodoemmkpcdjb
 
 Protokolant jest niezależnym projektem i nie jest powiązany z Google LLC ani przez nią wspierany. Google Meet jest znakiem towarowym Google LLC.
 

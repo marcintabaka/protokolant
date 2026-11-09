@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Wgrywa stronę dodatku i politykę prywatności na https://protokolant.marcintabaka.pl/ przez ssh/rsync.
 # Serwer i katalog podaj w .local.env (poza gitem): DEPLOY_SSH=<alias ssh>, DEPLOY_PATH=<katalog public_html na serwerze>.
-# Źródło: store/site/protokolant/ (.htaccess, index.html, style.css, instalacja/index.html, prywatnosc/index.html, wersja-testowa/index.html + paczka z dist/, img/; obrazki odtwarza store/site/build-images.sh).
+# Źródło: store/site/protokolant/ (.htaccess, index.html, style.css, instalacja/index.html, prywatnosc/index.html, wersja-testowa/index.html, img/; obrazki odtwarza store/site/build-images.sh).
 # Adres https://protokolant.marcintabaka.pl/prywatnosc/ jest podany w Chrome Web Store – nie zmieniać.
 # Adres do weryfikacji można nadpisać: BASE=http://protokolant.marcintabaka.pl/ scripts/deploy-site.sh
 set -euo pipefail
@@ -12,12 +12,10 @@ DEPLOY_SSH=""; DEPLOY_PATH=""; [ -f .local.env ] && . ./.local.env
 REMOTE=$DEPLOY_PATH
 BASE=${BASE:-https://protokolant.marcintabaka.pl/}
 
-# WERSJA TYMCZASOWA: paczka do pobrania na /wersja-testowa/ – nazwę bierzemy ze strony, plik z dist/ (scripts/build-zip.py).
-TEST_ZIP=$(grep -oE 'protokolant-[0-9]+\.[0-9]+\.[0-9]+\.zip' "$SRC/wersja-testowa/index.html" | sort -u)
-[ "$(echo "$TEST_ZIP" | wc -l)" = 1 ] || { echo "BŁĄD: strona wersji testowej wskazuje różne paczki: $TEST_ZIP" >&2; exit 1; }
-[ -f "dist/$TEST_ZIP" ] || { echo "BŁĄD: brak dist/$TEST_ZIP – zbuduj paczkę (python3 -I scripts/build-zip.py) albo popraw stronę" >&2; exit 1; }
+# WERSJA TYMCZASOWA: /wersja-testowa/ to już tylko instrukcja przejścia na wersję ze sklepu (bez paczki ZIP).
+# rsync --delete usuwa z serwera paczki ZIP wgrane tam wcześniej.
 STAGE=$(mktemp -d); trap 'rm -rf "$STAGE"' EXIT
-cp "$SRC/wersja-testowa/index.html" "dist/$TEST_ZIP" "$STAGE/"
+cp "$SRC/wersja-testowa/index.html" "$STAGE/"
 
 ssh -o BatchMode=yes "$DEPLOY_SSH" "test -d $REMOTE && mkdir -p $REMOTE/img $REMOTE/instalacja $REMOTE/prywatnosc $REMOTE/wersja-testowa"
 scp -q "$SRC/.htaccess" "$SRC/index.html" "$SRC/style.css" "$DEPLOY_SSH:$REMOTE/"
@@ -41,7 +39,8 @@ check "${BASE}style.css" "$SRC/style.css"
 check "${BASE}instalacja/" "$SRC/instalacja/index.html"
 check "${BASE}prywatnosc/" "$SRC/prywatnosc/index.html"
 check "${BASE}wersja-testowa/" "$SRC/wersja-testowa/index.html"
-check "${BASE}wersja-testowa/$TEST_ZIP" "dist/$TEST_ZIP"
+code=$(curl -s -o /dev/null -w '%{http_code}' "${BASE}wersja-testowa/protokolant-1.0.5.zip")
+[ "$code" = 404 ] && echo "OK: stara paczka ZIP usunięta (404)" || { echo "BŁĄD: stara paczka ZIP nadal dostępna ($code)" >&2; fail=1; }
 for f in "$SRC"/img/*; do check "${BASE}img/$(basename "$f")" "$f"; done
 ctype=$(curl -s -o /dev/null -w '%{content_type}' "${BASE}prywatnosc/")
 case "$ctype" in *[Uu][Tt][Ff]-8*) echo "OK: kodowanie $ctype" ;; *) echo "BŁĄD: Content-Type bez UTF-8: $ctype" >&2; fail=1 ;; esac
