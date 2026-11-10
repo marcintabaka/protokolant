@@ -41,7 +41,7 @@ CO ZAWIERA PLIK
 
 • nazwę spotkania (np. tytuł wydarzenia z kalendarza), kod i link do spotkania, datę, godziny rozpoczęcia i zakończenia oraz listę uczestników,
 • wypowiedzi w formacie „[godzina] Osoba: tekst” – kolejne zdania tej samej osoby są łączone w jedną wypowiedź,
-• Twoje wiadomości z czatu spotkania, oznaczone jako „(czat)”.
+• wiadomości z czatu spotkania – Twoje i pozostałych uczestników – oznaczone jako „(czat)”.
 
 Plik ma format Markdown (.md) – to zwykły tekst, który otworzysz w dowolnym edytorze, a narzędzia AI czytają go bez przygotowania.
 
