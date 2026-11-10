@@ -54,17 +54,24 @@ const D1 = 'spaces/S/devices/d1', D2 = 'spaces/S/devices/d2';
   winL.message.forEach((f) => f({ origin: 'https://chat.google.com', data: { source: 'protokolant-chat', type: 'own-message', text: 'mój link' } }));
   page({ type: 'chat', id: 'x/own', deviceId: D1, text: 'mój link', source: 'collections' }); // echo własnej wiadomości
   page({ type: 'caption', mid: '3/' + D1, deviceId: D1, version: 1, text: 'po czacie' });
+  // wiadomość dostarczona z opóźnieniem: czas wysłania z pakietu (µs), wpis trafia przed późniejsze wypowiedzi
+  const lateMs = Date.now() - 1000;
+  page({ type: 'chat', id: 'spaces/S/messages/late', deviceId: D2, text: 'spóźniona', ts: lateMs * 1000, source: 'collections' });
+  // niewiarygodny czas z pakietu (godzina w przyszłości) – zostaje czas odebrania
+  page({ type: 'chat', id: 'spaces/S/messages/bad', deviceId: D2, text: 'zły czas', ts: Date.now() + 3600e3, source: 'collections' });
   const st = await status();
   assert(st.code === 'abc-defg-hij' && st.title === 'Status projektu', `kod i tytuł z karty: ${st.code} / ${st.title}`);
   meetingName = 'Szczegóły spotkania'; // ogólna etykieta – ignorujemy
   await sleep(5200);
   assert((await status()).title === 'Status projektu', 'ogólna etykieta „Szczegóły spotkania” nie zastępuje nazwy');
   meetingName = 'Klient<>Dostawca (status zadań)';
-  assert(st.level === 'on' && st.entries === 3 && st.chats === 2, `status: ${st.level}, wypowiedzi ${st.entries}, czat ${st.chats}`);
+  assert(st.level === 'on' && st.entries === 3 && st.chats === 4, `status: ${st.level}, wypowiedzi ${st.entries}, czat ${st.chats}`);
   const s = await new Promise((r) => onMsg({ type: 'getSession', since: null }, {}, r));
   const lines = Protokolant.formatEntries(s).map((e) => `${e.speaker}${e.chat ? ' (czat)' : ''}: ${e.text}`);
-  const want = ['Marcin Tabaka: Dzień dobry wszystkim', 'Jan Kowalski: Cześć', 'Jan Kowalski (czat): https://example.com', 'Marcin Tabaka (czat): mój link', 'Marcin Tabaka: po czacie'];
+  const want = ['Jan Kowalski (czat): spóźniona', 'Marcin Tabaka: Dzień dobry wszystkim', 'Jan Kowalski: Cześć', 'Jan Kowalski (czat): https://example.com', 'Marcin Tabaka (czat): mój link', 'Marcin Tabaka: po czacie', 'Jan Kowalski (czat): zły czas'];
   assert(JSON.stringify(lines) === JSON.stringify(want), 'wpisy: ' + JSON.stringify(lines));
+  const late = Protokolant.formatEntries(s).find((e) => e.text === 'spóźniona');
+  assert(late.time === Protokolant.localTime(Math.max(lateMs, s.startedAt)), `godzina spóźnionej wiadomości z pakietu (nie wcześniej niż początek): ${late.time}`);
   assert((await new Promise((r) => onMsg({ type: 'getSession', since: s.updatedAt }, {}, r))) === null, 'getSession bez zmian zwraca null');
   await sleep(5200); // powiadomienie startuje 5 s po wejściu, gdy kanał napisów działa
   await sleep(800);
@@ -92,7 +99,7 @@ const D1 = 'spaces/S/devices/d1', D2 = 'spaces/S/devices/d2';
   const saves = swMsgs.filter((m) => m.type === 'saveSession').map((m) => m.reason);
   assert(JSON.stringify(saves) === JSON.stringify(['leave-click', 'call-ui-gone']), 'zapis po kliknięciu Opuść i po zniknięciu UI (drugi pomijany, jeśli bez zmian): ' + saves);
   const stored = store['session:abc-defg-hij_' + Protokolant.localDate(Date.now())];
-  assert(stored && stored.endedAt && stored.entries.length === 5, 'bufor w storage z końcem rozmowy');
+  assert(stored && stored.endedAt && stored.entries.length === 7, 'bufor w storage z końcem rozmowy');
   assert(stored.title === 'Klient<>Dostawca (status zadań)', 'nazwa spotkania z dolnego paska Meet: ' + stored.title);
   assert(Protokolant.sessionFilename(stored).endsWith('_abc-defg-hij.md'), 'nazwa pliku z kodem: ' + Protokolant.sessionFilename(stored));
   assert(Protokolant.buildMarkdown(stored).startsWith('# Klient<>Dostawca (status zadań)\n'), 'tytuł pliku = nazwa spotkania');

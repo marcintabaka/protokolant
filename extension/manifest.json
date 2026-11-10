@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Protokolant – transkrypcje dla Google Meet™",
   "short_name": "Protokolant",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Transkrypcje spotkań Google Meet™ po polsku zapisywane do plików na Twoim komputerze. Za darmo, bez konta, bez wysyłania danych.",
   "icons": {
     "16": "icons/rec-16.png",

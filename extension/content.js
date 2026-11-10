@@ -243,6 +243,22 @@
     markChanged();
   }
 
+  // Czas wysłania wiadomości z pakietu Meet (pole 3). Jednostki nie znamy, więc s/ms/µs/ns rozpoznajemy
+  // po rzędzie wielkości. Bierzemy go tylko, gdy jest wiarygodny: nie z przyszłości (zapas na rozjazd zegarów),
+  // nie starszy niż 10 min i nie sprzed początku transkrypcji. W przeciwnym razie zostaje czas odebrania.
+  // Przy zamkniętym panelu czatu Meet potrafi dostarczyć wiadomość kilkanaście sekund po wysłaniu.
+  const CHAT_TS_SKEW_MS = 5000;
+  const CHAT_TS_MAX_AGE_MS = 10 * 60 * 1000;
+  function chatTime(ts, now) {
+    let t = Number(ts);
+    if (!Number.isFinite(t) || t < 1e9) return now;
+    while (t >= 1e13) t /= 1000;
+    while (t < 1e12) t *= 1000;
+    t = Math.round(t);
+    if (t > now + CHAT_TS_SKEW_MS || t < now - CHAT_TS_MAX_AGE_MS) return now;
+    return Math.max(Math.min(t, now), state.session.startedAt || 0);
+  }
+
   // Wiadomość z czatu: ze strony Meet (kanały WebRTC, odpowiedź CreateMeetingMessage)
   // albo z ramki Google Chat (własne wysłane). Dedup po ID i po treści (15 s).
   function addChat(c, now) {
@@ -250,21 +266,26 @@
     if (!text) return;
     const key = c.id ? `chat:${c.id}` : null;
     if (key && state.entryByMid.has(key)) return;
-    const dup = state.session.entries.slice(-50).find((e) => e.chat && e.text === text && Math.abs(e.ts - now) < 15000);
+    const at = chatTime(c.ts, now);
+    const dup = state.session.entries.slice(-50).find((e) => e.chat && e.text === text && Math.abs(e.ts - at) < 15000);
     if (dup) {
       if (key) state.entryByMid.set(key, dup);
       if (c.deviceId && !dup.deviceId) dup.deviceId = c.deviceId;
       return;
     }
     const deviceId = c.deviceId || state.selfDevice || null;
-    const e = { id: state.nextId++, chat: true, ts: now, deviceId, speaker: deviceId ? state.devices[deviceId] || null : null, text };
+    const e = { id: state.nextId++, chat: true, ts: at, deviceId, speaker: deviceId ? state.devices[deviceId] || null : null, text };
     if (key) {
       e.mid = key;
       state.entryByMid.set(key, e);
     }
-    state.session.entries.push(e);
+    // wpisy są uporządkowane po czasie – spóźnioną wiadomość wstawiamy na jej miejsce
+    const entries = state.session.entries;
+    let k = entries.length;
+    while (k > 0 && entries[k - 1].ts > at) k--;
+    entries.splice(k, 0, e);
     log(`czat (${c.source || '?'}): ${e.speaker || 'Ty'}: ${text.slice(0, 80)}`);
-    dbg('chat', { source: c.source, id: c.id, deviceId, text });
+    dbg('chat', { source: c.source, id: c.id, deviceId, text, ts: c.ts, at, delay: now - at });
     markChanged();
     maybePersist();
   }
